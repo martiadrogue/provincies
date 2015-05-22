@@ -1,0 +1,45 @@
+/* TEAM */
+
+  Chef: Martí Adrogué
+  Contact: marti.adrogue [at] google.com
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+  UI developer: Martí Adrogué
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+  Web Developer: Martí Adrogué
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+  Standard Man: Martí Adrogué
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+  Analyst: Martí Adrogué
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+/* THANKS */
+
+  (First) EN Translator: Martí Adrogué
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+  CA Translator: Martí Adrogué
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+  EN Translator: Martí Adrogué
+  Twitter: @Marti_Adrogue
+  From: Barcelona, Catalonia, Spain
+
+  Media Queries by: Martí Adrogué (@Marti_Adrogue)
+
+/* SITE */
+
+  Last update: 2015/02/018
+  Language: Català / English
+  Doctype: HTML5
+  IDE: Atom Editor

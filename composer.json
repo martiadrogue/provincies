@@ -1,0 +1,34 @@
+{
+    "name": "martiadrogue/provincies",
+    "description": "Lloc web amb informació territorial de l'Estat espanyol, permet la navegació per províncies, la consulta de municipis per província i dona la província vinculada a un codi postal donat.",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/martiadrogue/mpwarfwk.git"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.6",
+        "martiadrogue/mpwarfwk": "dev-devel"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.6",
+        "phpmd/phpmd": "~2.2",
+        "halleck45/phpmetrics": "~1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martí Adrogué",
+            "email": "marti.adrogue@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+          "Com\\Martiadrogue\\Provincies\\": "src/Com/Martiadrogue/Provincies/"
+        }
+    }
+
+}
