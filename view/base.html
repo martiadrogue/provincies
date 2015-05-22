@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link type="application/font-woff">
+  <link type="application/vnd.ms-fontobject">
+  <link type="application/x-font-ttf">
+  <link type="font/opentype">
+  {% block head %}
+    <title>{% block title %}{% endblock %} - Provincies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://static1.provincies.dev/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://static1.provincies.dev/css/main.css">
+    <link rel="icon" href="favicon.ico">
+  {% endblock %}
+</head>
+<body>
+  <div class="container">
+    <header class="row">
+      <div class="col-xs-2 col-md-1">
+        <h1><a href="{{ links.root }}"><img src="http://static2.provincies.dev/img/logo-header.png" alt="CP Finder"></a></h1>
+      </div>
+      <nav class="col-xs-6 col-md-10 main-menu">
+        <ul class="nav nav-pills">
+          <li role="presentation" class="text-uppercase"><a href="{{ links.about }}">About</a></li>
+          <li role="presentation" class="text-uppercase"><a href="{{ links.contact }}">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="col-xs-2 col-s-1 col-md-1 search-box">
+        <a href="{{ links.search }}" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </a>
+      </div>
+    </header>
+  </div>
+  {% block hotcontent %}{% endblock %}
+  <div class="container main-content">
+    <main class="row">
+      {% block maincontent %}{% endblock %}
+    </main>
+  </div>
+  <div class="container main-footer">
+    <footer class="row">
+      {% block footer %}{% endblock %}
+      <div class="col-md-12 copyright">Copyright &copy; 2015 Martí Adrogué. All Rights Reserved.</div>
+    </footer>
+  </div>
+  {% block livebehaviour %}
+    <script src="http://static2.provincies.dev/js/expand.js"></script>
+  {% endblock %}
+</body>
+</html>
