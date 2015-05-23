@@ -3,6 +3,7 @@
 namespace Com\Martiadrogue\Provincies\Controller;
 
 use PDOException;
+use Com\Martiadrogue\Provincies\Common\ProvinciaConverter;
 
 /**
  *
@@ -26,8 +27,9 @@ class ProvinciaController extends ProvinciesController
         $data = parent::getMenuLinks();
         try {
             $pdo = parent::getService('pdo');
-            $data['provincia'] = $pdo->readByUniqueField('provincias', 'id_provincia', $index, 'id_provincia', 'provincia');
-            $data['municipis'] = $pdo->join('municipios', 'provincias', 'id_provincia', $index, 'cod_municipio', 'DC', 'nombre');
+            $fields = $pdo->joinByField('municipios', 'provincias', 'id_provincia', $index, 'id_municipio', 'id_provincia', 'provincia', 'cod_municipio', 'DC', 'nombre');
+            $converter = new ProvinciaConverter($fields);
+            $data['provincia'] = $converter->convert();
 
             return parent::render('provincia/detail.html', $data);
         } catch (PDOException $ex) {

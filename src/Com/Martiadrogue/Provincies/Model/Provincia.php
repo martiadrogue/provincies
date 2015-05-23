@@ -36,6 +36,16 @@ class Provincia
         $this->name = $name;
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getMunicipis()
+    {
+        return $this->municipis;
+    }
+
     public function __toString()
     {
         return $this->name;
