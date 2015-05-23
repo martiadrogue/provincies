@@ -29,6 +29,11 @@
         "psr-4": {
           "Com\\Martiadrogue\\Provincies\\": "src/Com/Martiadrogue/Provincies/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Com\\Martiadrogue\\ProvinciesTest\\": "test/Com/Martiadrogue/ProvinciesTest/Unit"
+        }
     }
 
 }

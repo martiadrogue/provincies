@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9302341222b13ce609838b5ba9785a34",
+    "hash": "fb62f6674cf925db4d22447c32ffa553",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -612,7 +612,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/martiadrogue/mpwarfwk.git",
-                "reference": "5f340b5e2c82650f114024449898aafc255171ef"
+                "reference": "d9f81dd05d0ad05d5ade57fcb948c8a26306e581"
             },
             "require": {
                 "doctrine/orm": "~2.5",
@@ -642,7 +642,7 @@
                 "framework",
                 "mvc"
             ],
-            "time": "2015-05-20 14:48:56"
+            "time": "2015-05-22 19:09:37"
         },
         {
             "name": "smarty/smarty",
