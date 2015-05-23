@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block maincontent %}
+  <section class="col-md-12">
+    <form action="/search" onsubmit="return false;">
+      <input id="search-box" class="js-searchInput textInput textInput--borderless textInput--jumbo" placeholder="Cerca CP" type="search" maxlength="5">
+    </form>
+    <a href="javascript:void(0)" class="search-category active-category">Calculadora de municipis</a><a href="javascript:void(0)" class="search-category">Cercar provincia</a>
+  </section>
+  <section class="col-md-12 result">
+    <ul class="list-unstyled list-inline">
+      {% for municipi in municipis %}
+        <li><span class="municipi"><a href="{{ links.provincia }}{{ provincia.id_provincia }}">{{ municipi.nombre }}</a></span></li>
+      {% endfor %}
+    </ul>
+    <div class="loading">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+  </section>
+{% endblock %}
+{% block livebehaviour %}
+  {{ parent() }}
+  <script src="http://static1.provincies.dev/js/search.js"></script>
+{% endblock %}
