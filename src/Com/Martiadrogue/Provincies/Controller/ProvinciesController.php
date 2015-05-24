@@ -21,7 +21,7 @@ class ProvinciesController extends BaseController
             'root' => 'http://'.$this->getHttpHost(),
             'about' => 'http://'.$this->getHttpHost().'/about',
             'contact' => 'http://'.$this->getHttpHost().'/contact',
-            'search' => 'http://'.$this->getHttpHost().'/calculadora-provincia',
+            'search' => 'http://'.$this->getHttpHost().'/provincia/',
             'provincia' => 'http://'.$this->getHttpHost().'/provincia/',
         ]);
     }
