@@ -27,7 +27,8 @@ class ProvinciaController extends ProvinciesController
         $data = parent::getMenuLinks();
         try {
             $pdo = parent::getService('pdo');
-            $fields = $pdo->joinByField('municipios', 'provincias', 'id_provincia', $index, 'id_municipio', 'id_provincia', 'provincia', 'cod_municipio', 'DC', 'nombre');
+            $code = substr($index, 0, 2);
+            $fields = $pdo->joinByField('municipios', 'provincias', 'id_provincia', $code, 'id_municipio', 'id_provincia', 'provincia', 'cod_municipio', 'DC', 'nombre');
             $converter = new ProvinciaConverter($fields);
             $data['provincia'] = $converter->convert();
 

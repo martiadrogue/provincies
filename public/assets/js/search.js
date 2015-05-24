@@ -1,9 +1,10 @@
+var searchBox = document.getElementById('search-box');
+
 window.onload = function() {
   prepareSearch();
 };
 
 function prepareSearch() {
-  var searchBox = document.getElementById('search-box');
   searchBox.addEventListener('keypress', function(e) {
     var theEvent = e || window.event;
     var key = theEvent.keyCode || theEvent.which;
@@ -11,8 +12,10 @@ function prepareSearch() {
     var regex = /[0-9]|\./;
 
     if(e.keyCode == 13) { // enter
-      alert('get Search!');
-      return true;
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+      var root = window.location.protocol + '//' + window.location.host;
+      window.location = root + "/provincia/" + searchBox.value;
     } else if(e.keyCode == 8) { // backspace
       return true;
     } else if(e.keyCode == 46) { // delete
@@ -24,5 +27,4 @@ function prepareSearch() {
       if(theEvent.preventDefault) theEvent.preventDefault();
     }
   });
-  searchBox.focus();
 }

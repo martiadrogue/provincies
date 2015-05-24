@@ -9,21 +9,21 @@ h1 {
 
 /** header */
 
-.main-menu, .search-box {
-  margin-top: 20px;
-}
-
 .main-menu {
   font-size: 2.2rem;
   font-family: 'Open Sans', sans-serif;
 }
 
-.search-box .btn-default {
+.main-menu, .search {
+  margin-top: 20px;
+}
+
+.search .btn-default {
   height: 45px;
   width: 45px;
   border-radius: 100px;
 }
-.search-box .btn-default span {
+.search .btn-default span {
   left: -4px;
   top: 2px;
 }
@@ -174,7 +174,67 @@ input[type=radio]:checked ~ .brief {
   border: 0;
 }
 
-/** cerca */
+/** header cerca */
+
+.search-box {
+  -webkit-transition: width 0.4s, border-radius 0.4s, background 0.4s, box-shadow 0.4s;
+  -moz-transition: width 0.4s, border-radius 0.4s, background 0.4s, box-shadow 0.4s;
+  -o-transition: width 0.4s, border-radius 0.4s, background 0.4s, box-shadow 0.4s;
+  transition: width 0.4s, border-radius 0.4s, background 0.4s, box-shadow 0.4s;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #ebebeb;
+  overflow: hidden;
+  float: right;
+  position: relative;
+}
+.search-box + label .search-icon {
+  color: black;
+}
+
+.search-box ~ label {
+  float: right;
+  right: -57px;
+  position: relative;
+  top: 9px;
+}
+
+.search-box:focus {
+  -webkit-transition: width 0.4s cubic-bezier(0.860, 0.000, 0.070, 1.000), border-radius 0.4s, background 0.4s;
+          transition: width 0.4s cubic-bezier(0.860, 0.000, 0.070, 1.000), border-radius 0.4s, background 0.4s;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding-left: 35px;
+  cursor: text;
+  width: 150px;
+  border-radius: auto;
+  background: #ebebeb;
+  color: black;
+}
+.search-box:focus + label .search-icon {
+  color: black;
+}
+.search-box:not(:focus) {
+  text-indent: -5000px;
+}
+
+#search-submit {
+  position: relative;
+  left: -5000px;
+}
+
+.search-icon {
+  position: relative;
+  left: -30px;
+  color: white;
+  cursor: pointer;
+}
+
+/** pag cerca */
 
 input[type="search"] {
     box-sizing: content-box;
