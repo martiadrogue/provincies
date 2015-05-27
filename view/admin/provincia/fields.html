@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="panel-heading"><h1>{% block fieldsettitle %}{% endblock %}</h1></div>
+
+  <form action="{{ links.action }}" method="post">
+    {% if municipi.id_comunidad %}
+      <input type="hidden" id="id_comunidad" name="id_comunidad" value="{{ provincia.id_comunidad }}">
+    {% endif %}
+    <div class="form-group">
+      <label for="id_provincia">Codi</label>
+      <input type="number" class="form-control" id="id_provincia" name="id_provincia" placeholder="Enter the Id" value="{{ provincia.id_provincia }}" min="0" max="65535" required>
+    </div>
+    <div class="form-group">
+      <label for="provincia">Nom</label>
+      <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Enter the name" value="{{ provincia.provincia }}" maxlength="100" required>
+    </div>
+    <input class="btn btn-default" type="submit" value="Submit">
+  </form>
+{% endblock %}

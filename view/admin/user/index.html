@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <a href="{{ links.usuaris }}/create/">Create a new User</a>
+  <div class="panel-heading"><h1>Usuaris</h1></div>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+    {% for usuari in usuaris %}
+      <tr>
+        <td>{{ usuari.name }}</td>
+        <td>{{ usuari.email }}</td>
+        <td><a href="{{ links.usuaris }}/edit/{{ usuari.id_user }}">New Password</a> | <a href="{{ links.usuaris }}/delete/{{ usuari.id_user }}">Delete</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ links.usuaris }}/create/">Create a new User</a>
+{% endblock %}

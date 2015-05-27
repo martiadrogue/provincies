@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="panel-heading"><h1>{% block fieldsettitle %}{% endblock %}</h1></div>
+
+  <form action="{{ links.action }}" method="post">
+    {% if municipi.id_municipio %}
+      <input type="hidden" id="id_municipio" name="id_municipio" value="{{ municipi.id_municipio }}">
+    {% endif %}
+    <div class="form-group">
+      <label for="cod_municipio">Codi</label>
+      <input type="number" class="form-control" id="cod_municipio" name="cod_municipio" placeholder="Enter code" value="{{ municipi.cod_municipio }}" min="0" max="65535" required>
+    </div>
+    <div class="form-group">
+      <label for="dc">DC</label>
+      <input type="number" class="form-control" id="dc" name="dc" placeholder="DC" value="{{ municipi.DC }}" min="0" max="65535" required>
+    </div>
+    <div class="form-group">
+      <label for="nombre">Nom</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" value="{{ municipi.nombre }}" maxlength="100" required>
+      <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="form-group">
+      <label for="id_provincia">Provincia {{ municipi.id_provincia }}</label>
+      <select class="form-control" id="id_provincia" name="id_provincia" required>
+        {% for provincia in provincies %}
+          <option value="{{ provincia.id_provincia }}" {% if municipi.id_provincia == provincia.id_provincia%}selected{% endif %}>{{ provincia.provincia }}</option>
+        {% endfor %}
+      </select>
+      <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <input class="btn btn-default" type="submit" value="Submit">
+  </form>
+{% endblock %}

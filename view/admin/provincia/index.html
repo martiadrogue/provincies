@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <a href="{{ links.provincies }}/create/">Create a new Provincia</a>
+  <div class="panel-heading"><h1>Provincies</h1></div>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+    {% for provincia in provincies %}
+      <tr>
+        <td>{{ provincia.provincia }}</td>
+        <td>...</td>
+        <td>...</td>
+        <td><a href="{{ links.provincies }}/edit/{{ provincia.id_provincia }}">Edit</a> | <a href="{{ links.provincies }}/delete/{{ provincia.id_provincia }}">Delete</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ links.provincies }}/create/">Create a new Provincia</a>
+{% endblock %}

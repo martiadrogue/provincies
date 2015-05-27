@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <a href="{{ links.municipis }}/create">Create a new Municipi</a>
+  <div class="panel-heading"><h1>Municipis</h1></div>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Code</th>
+      <th>DC</th>
+      <th>Name</th>
+      <th>Provincia</th>
+      <th></th>
+    </tr>
+    {% for municipi in municipis %}
+      <tr>
+        <td>{{ municipi.cod_municipio }}</td>
+        <td>{{ municipi.DC }}</td>
+        <td>{{ municipi.nombre }}</td>
+        <td>{{ municipi.provincia }}</td>
+        <td><a href="{{ links.municipis }}/edit/{{ municipi.id_municipio }}">Edit</a> | <a href="{{ links.municipis }}/delete/{{ municipi.id_municipio }}">Delete</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ links.municipis }}/create">Create a new Municipi</a>
+{% endblock %}

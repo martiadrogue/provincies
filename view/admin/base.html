@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link type="application/font-woff">
+  <link type="application/vnd.ms-fontobject">
+  <link type="application/x-font-ttf">
+  <link type="font/opentype">
+  {% block head %}
+    <title>{% block title %}{% endblock %} Admin - Provincies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://static1.provincies.dev/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://static1.provincies.dev/css/main.css">
+    <link rel="icon" href="favicon.ico">
+  {% endblock %}
+</head>
+<body>
+  <div class="container">
+    <header class="row">
+      <div class="col-xs-2 col-md-1">
+        <h1><a href="{{ links.root }}"><img src="http://static2.provincies.dev/img/logo-header.png" alt="CP Finder"></a></h1>
+      </div>
+      <div class="col-xs-5 col-md-8 main-menu">
+
+      </div>
+      <nav class="col-xs-3 col-s-2 col-md-3 search">
+        <ul class="nav-pills list-unstyled">
+          <li role="presentation" class="text-uppercase">Hello {{ userName }} | <a href="{{ links.logout }}">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="container main-content">
+    <div class="row">
+      <nav class="col-xs-3 col-s-2 col-md-3 admin-bar">
+        <ul class="nav">
+          <li role="presentation" class="text-uppercase"><a href="{{ links.provincies }}">Provincies</a></li>
+          <li role="presentation" class="text-uppercase"><a href="{{ links.municipis }}">Municipis</a></li>
+          <li role="presentation" class="text-uppercase"><a href="{{ links.usuaris }}">Usuaris</a></li>
+        </ul>
+      </nav>
+      <main class="col-xs-9 col-s-10 col-md-9 main-content">
+        {% block content %}{% endblock %}
+
+      </main>
+    </div>
+  </div>
+  <div class="container main-footer">
+    <footer class="row">
+      <div class="col-md-12 copyright">Copyright &copy; 2015 Martí Adrogué. All Rights Reserved.</div>
+    </footer>
+  </div>
+</body>
+</html>
