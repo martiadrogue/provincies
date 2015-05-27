@@ -27,3 +27,9 @@ En una altre pàgina hi ha un cercador de municipis, amb autocompletat javascrip
 I cerca parcial.
 
 Sistema per guardar l'activitat dels clients al lloc web.
+
+# Data
+
+Comtes d'administador:
+admin:ZZGBjL
+admin2:CzGccR
