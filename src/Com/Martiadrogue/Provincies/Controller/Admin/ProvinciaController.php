@@ -99,6 +99,7 @@ class ProvinciaController extends AdminController
             $pdo = parent::getService('pdo');
             if ($index) {
                 $pdo->delete('provincias', 'id_provincia', $index);
+                $this->removeCache($index);
                 header('Location: '.$data['links']['provincies']);
 
                 return '';
@@ -115,17 +116,26 @@ class ProvinciaController extends AdminController
     {
         $provincia = $request->getPost('provincia');
         $pdo->query("INSERT INTO provincias VALUES ($idProvincia, '$provincia')");
+        $this->removeCache($idProvincia);
     }
 
     private function editProvincia($idProvincia, $request, $pdo)
     {
         $nombre = $request->getPost('provincia');
         $pdo->update('provincias', 'id_provincia', $idProvincia, 'id_provincia', $idProvincia, 'provincia', $nombre);
+        $this->removeCache($idProvincia);
+
     }
 
     private function getProvincia($idProvincia,  $pdo)
     {
         return $pdo->readByUniqueField('provincias',' id_provincia', $idProvincia, 'id_provincia', 'provincia');
+    }
+
+    private function removeCache($index)
+    {
+        parent::deleteModelCache('provincia');
+        parent::deleteModelCache('provincia'.$index);
     }
 
 }

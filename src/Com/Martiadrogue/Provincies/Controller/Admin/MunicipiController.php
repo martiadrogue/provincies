@@ -99,6 +99,7 @@ class MunicipiController extends AdminController
             $pdo = parent::getService('pdo');
             if ($index) {
                 $pdo->delete('municipios', 'id_municipio', $index);
+                $this->removeCache($index);
                 header('Location: '.$data['links']['municipis']);
 
                 return '';
@@ -124,6 +125,7 @@ class MunicipiController extends AdminController
         $digitControl = $request->getPost('dc');
         $nom = $request->getPost('nombre');
         $pdo->create('municipios', $idProvincia, $codMunicipi, $digitControl, $nom);
+        $this->removeCache($codMunicipi, $idProvincia);
     }
 
     private function editMunicipi($idMunicipio, $request, $pdo)
@@ -140,6 +142,7 @@ class MunicipiController extends AdminController
                 'DC', $digitControl,
                 'nombre', $nom
             );
+        $this->removeCache($codMunicipi, $idMunicipio);
     }
 
     private function getProvincies($pdo)
@@ -156,5 +159,11 @@ class MunicipiController extends AdminController
         return $data;
     }
 
+    private function removeCache($indexMunicipi, $indexProvincia)
+    {
+        parent::deleteModelCache('municipi');
+        parent::deleteModelCache('municipi'.$indexMunicipi);
+        parent::deleteModelCache('provincia'.$indexProvincia);
+    }
 
 }

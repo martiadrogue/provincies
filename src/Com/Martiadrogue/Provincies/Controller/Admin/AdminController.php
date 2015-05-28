@@ -5,6 +5,7 @@ namespace Com\Martiadrogue\Provincies\Controller\Admin;
 use Com\Martiadrogue\Mpwarfwk\Controller\BaseController;
 use Com\Martiadrogue\Mpwarfwk\Connection\Http\HtmlResponse;
 use Com\Martiadrogue\Provincies\Common\SessionHandler;
+use Com\Martiadrogue\Mpwarfwk\Cache\DiskCache;
 
 class AdminController extends BaseController
 {
@@ -61,5 +62,12 @@ class AdminController extends BaseController
         $sessionHandler = new SessionHandler($request->getSession(), $ipClient);
 
         return $sessionHandler->getSessionData(SessionHandler::USER_TAG);
+    }
+
+    protected function deleteModelCache($key)
+    {
+        $cache = new DiskCache();
+        $hash = md5($key);
+        $cache->delete($hash);
     }
 }

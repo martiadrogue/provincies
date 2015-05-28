@@ -18,7 +18,6 @@ class SessionController extends AdminController
             if ($name) {
                 $password = $request->getPost('password');
                 $data['usuari'] = $pdo->readByUniqueField('users', 'name', "'$name'", 'password');
-
                 $sessionHandler = new SessionHandler($request->getSession(), $request->getClientAddresses());
                 if ($sessionHandler->openSession($name, $password, $data['usuari']['password'])) {
                     header('Location: '.$data['links']['provincies']);
@@ -46,5 +45,5 @@ class SessionController extends AdminController
         header('Location: '.$data['links']['usuaris'].'/login');
 
         return '';
-        }
+    }
 }
