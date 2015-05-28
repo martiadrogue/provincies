@@ -18,8 +18,12 @@ class HomeController extends ProvinciesController
     {
         $data = parent::getMenuLinks();
         try {
-            $pdo = parent::getService('pdo');
-            $data['provincias'] = $pdo->read('provincias', 'id_provincia', 'provincia');
+            $data['provincias'] = $this->getModelCache('provincia');
+            if (!$data['provincias']) {
+                $pdo = parent::getService('pdo');
+                $data['provincias'] = $pdo->read('provincias', 'id_provincia', 'provincia');
+                $this->addModelCache('provincia', $data['provincias']);
+            }
 
             return parent::render('home/index.html', $data);
         } catch (PDOException $ex) {

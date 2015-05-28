@@ -4,6 +4,8 @@ namespace Com\Martiadrogue\Provincies\Controller;
 
 use Com\Martiadrogue\Mpwarfwk\Controller\BaseController;
 use Com\Martiadrogue\Mpwarfwk\Connection\Http\HtmlResponse;
+use Com\Martiadrogue\Mpwarfwk\Cache\MemoryCache;
+use Com\Martiadrogue\Mpwarfwk\Cache\DiskCache;
 
 class ProvinciesController extends BaseController
 {
@@ -40,7 +42,33 @@ class ProvinciesController extends BaseController
         $template->setCacheHome($this->cacheTemplate);
         $template->loadTemplate($path);
         $canvas = $template->paint($data);
+        $response = new HtmlResponse($canvas, 200);
+        $this->addCache($response);
 
-        return new HtmlResponse($canvas, 200);
+        return $response;
     }
+
+    private function addCache($response)
+    {
+        $request = parent::getService('request');
+        $cache = new MemoryCache();
+        $hash = md5($request->getUri());
+        $cache->set($hash, serialize($response), 120);
+    }
+
+    protected function getModelCache($key)
+    {
+        $cache = new DiskCache();
+        $hash = md5($key);
+
+        return unserialize($cache->get($hash));
+    }
+
+    protected function addModelCache($key, $data)
+    {
+        $cache = new DiskCache();
+        $hash = md5($key);
+        $cache->set($hash, serialize($data), null);
+    }
+
 }

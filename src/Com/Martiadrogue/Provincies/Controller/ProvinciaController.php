@@ -26,11 +26,15 @@ class ProvinciaController extends ProvinciesController
     {
         $data = parent::getMenuLinks();
         try {
-            $pdo = parent::getService('pdo');
-            $code = substr($index, 0, 2);
-            $fields = $pdo->joinByField('municipios', 'provincias', 'id_provincia', $code, 'id_municipio', 'id_provincia', 'provincia', 'cod_municipio', 'DC', 'nombre');
-            $converter = new ProvinciaConverter($fields);
-            $data['provincia'] = $converter->convert();
+            $data['provincia'] = $this->getModelCache('provincia'.$index);
+            if (!$data['provincia']) {
+                $pdo = parent::getService('pdo');
+                $code = substr($index, 0, 2);
+                $fields = $pdo->joinByField('municipios', 'provincias', 'id_provincia', $code, 'id_municipio', 'id_provincia', 'provincia', 'cod_municipio', 'DC', 'nombre');
+                $converter = new ProvinciaConverter($fields);
+                $data['provincia'] = $converter->convert();
+                $this->addModelCache('provincia'.$index, $data['provincia']);
+            }
 
             return parent::render('provincia/detail.html', $data);
         } catch (PDOException $ex) {
