@@ -12,21 +12,11 @@ class MunicipiService extends ProvinciesService
         # code...
     }
 
-    public function executeIndex($index)
+    public function executeIndex($string)
     {
-        try {
-            $data['municipis'] = $this->getModelCache('municipi'.$index);
-            if (!$data['municipis']) {
-                $pdo = parent::getService('pdo');
-                $data['municipis'] = $pdo->readByField('municipios', 'id_provincia', $index, 'id_municipio', 'id_provincia', 'nombre');
-                $this->addModelCache('municipi'.$index, $data['municipis']);
-            }
-        } catch (PDOException $ex) {
-            $data['municipis'] = [];
-            if ($ex->getCode() === '42S02') {
-                // crea taula
-            }
-        }
+        $sphinx = parent::getService('sphinx');
+        $data = $sphinx->addQuery($string, 'municipios');
+
         return parent::encode($data);
 
     }
