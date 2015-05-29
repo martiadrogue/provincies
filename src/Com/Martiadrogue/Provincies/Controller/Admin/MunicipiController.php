@@ -100,6 +100,7 @@ class MunicipiController extends AdminController
             if ($index) {
                 $pdo->delete('municipios', 'id_municipio', $index);
                 $this->removeCache($index);
+                $this->rotateSphinx();
                 header('Location: '.$data['links']['municipis']);
 
                 return '';
@@ -126,6 +127,7 @@ class MunicipiController extends AdminController
         $nom = $request->getPost('nombre');
         $pdo->create('municipios', $idProvincia, $codMunicipi, $digitControl, $nom);
         $this->removeCache($codMunicipi, $idProvincia);
+        $this->rotateSphinx();
     }
 
     private function editMunicipi($idMunicipio, $request, $pdo)
@@ -143,6 +145,12 @@ class MunicipiController extends AdminController
                 'nombre', $nom
             );
         $this->removeCache($codMunicipi, $idMunicipio);
+        $this->rotateSphinx();
+    }
+
+    private function rotateSphinx()
+    {
+        exec("sudo -uroot indexer --config /etc/sphinx/provincies/sphinx.conf --all --rotate");
     }
 
     private function getProvincies($pdo)
